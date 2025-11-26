@@ -1,0 +1,82 @@
+/* ============================
+   DASHBOARD – BLACK & GOLD PREMIUM
+=============================== */
+
+.dashboard-wrapper {
+  padding: 30px;
+  color: #fff;
+}
+
+.dash-title {
+  font-size: 2.4rem;
+  font-weight: 700;
+  text-align: center;
+  color: #d4af37;
+  margin-bottom: 8px;
+}
+
+.dash-subtitle {
+  text-align: center;
+  margin-bottom: 35px;
+  color: #c7c7c7;
+  font-size: 1.1rem;
+}
+
+/* רשת כרטיסים */
+.dashboard-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+}
+
+/* כרטיסים */
+.dash-card {
+  background: rgba(17, 21, 30, 0.88);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  border-radius: 18px;
+  padding: 28px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.35s ease;
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.08);
+}
+
+.dash-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 30px rgba(212, 175, 55, 0.15);
+}
+
+.dash-card h2 {
+  color: #d4af37;
+  margin-top: 12px;
+  margin-bottom: 8px;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.dash-card p {
+  color: #c9c9c9;
+  font-size: 0.95rem;
+}
+
+/* אייקונים */
+.dash-icon {
+  font-size: 3rem;
+  color: #d4af37;
+  margin-bottom: 10px;
+}
+
+/* מובייל */
+@media (max-width: 540px) {
+  .dash-title {
+    font-size: 2rem;
+  }
+  
+  .dash-card {
+    padding: 24px 18px;
+  }
+
+  .dash-icon {
+    font-size: 2.6rem;
+  }
+}
