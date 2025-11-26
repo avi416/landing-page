@@ -1,0 +1,418 @@
+/* ================================
+   BLACK & GOLD PREMIUM ADMIN PANEL
+================================ */
+
+:root {
+  --gold: #d4af37;
+  --gold-light: rgba(212, 175, 55, 0.35);
+  --bg-dark: #090d14;
+  --bg-card: rgba(18, 22, 31, 0.85);
+  --text-main: #f5f5f5;
+  --text-muted: #b8b8b8;
+}
+
+/* CONTAINER */
+.admin-container {
+  display: flex;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #06080d, #111824);
+  color: var(--text-main);
+  direction: rtl;
+}
+
+/* ================================
+   SIDEBAR
+================================ */
+.sidebar {
+  width: 260px;
+  background: #0b0f16;
+  padding: 28px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  border-left: 1px solid var(--gold-light);
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  transition: 0.3s ease;
+}
+
+.sidebar-logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--gold);
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* LINKS */
+.sidebar-links {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-size: 1.05rem;
+  color: var(--text-main);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid transparent;
+  transition: 0.25s ease;
+}
+
+.sidebar-link .icon {
+  color: var(--gold);
+  font-size: 1.2rem;
+}
+
+.sidebar-link:hover {
+  background: rgba(212, 175, 55, 0.12);
+  border-color: var(--gold);
+  transform: translateX(-4px);
+}
+
+.sidebar-link.active {
+  background: rgba(212, 175, 55, 0.28);
+  border-color: var(--gold);
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.4);
+}
+
+/* LOGOUT BUTTON */
+.logout-btn {
+  margin-top: auto;
+  background: #c0392b;
+  color: #fff;
+  padding: 12px 0;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1.05rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: 0.2s;
+}
+
+.logout-btn:hover {
+  background: #e74c3c;
+}
+
+/* ================================
+   MOBILE
+================================ */
+.mobile-toggle {
+  display: none;
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  z-index: 2000;
+  padding: 12px;
+  border-radius: 8px;
+  background: var(--gold);
+  color: #000;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+@media (max-width: 860px) {
+  .sidebar {
+    position: fixed;
+    right: -270px;
+    top: 0;
+    height: 100%;
+    z-index: 1500;
+  }
+
+  .sidebar.open {
+    right: 0;
+  }
+
+  .mobile-toggle {
+    display: block;
+  }
+
+  .admin-content {
+    margin-top: 70px;
+  }
+}
+
+/* ================================
+   MAIN CONTENT AREA
+================================ */
+.admin-content {
+  flex: 1;
+  padding: 40px;
+}
+
+/* CARD */
+.admin-box {
+  background: var(--bg-card);
+  padding: 25px;
+  border-radius: 15px;
+  border: 1px solid var(--gold-light);
+  box-shadow: 0px 0px 18px rgba(212, 175, 55, 0.08);
+  margin-bottom: 35px;
+  position: relative;
+}
+
+.admin-box h2 {
+  color: var(--gold);
+  margin-bottom: 14px;
+  font-size: 1.4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ================================
+   IMAGE MANAGER GRID
+================================ */
+.gallery-grid {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.2rem;
+}
+
+.gallery-item {
+  position: relative;
+  background: #0a0f1d;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.35);
+  transition: transform 0.25s ease;
+}
+
+.gallery-item:hover {
+  transform: translateY(-4px);
+}
+
+.gallery-img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+.delete-btn {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.4rem 1rem;
+  background: #d9534f;
+  border: none;
+  color: white;
+  font-size: 0.85rem;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.25s ease, background 0.2s ease;
+}
+
+.gallery-item:hover .delete-btn {
+  opacity: 1;
+}
+
+.delete-btn:hover {
+  background: #c9302c;
+}
+
+@media (max-width: 600px) {
+  .gallery-img {
+    height: 120px;
+  }
+}
+
+/* UPLOAD BUTTON */
+.upload-btn {
+  display: inline-block;
+  background: var(--gold);
+  color: #000;
+  padding: 0.55rem 1.2rem;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-bottom: 1.5rem;
+  transition: 0.2s ease;
+  border: none;
+}
+
+.upload-btn:hover {
+  background: #b99630;
+  transform: translateY(-2px);
+}
+
+.upload-btn input {
+  display: none;
+}
+
+/* ================================
+   FAVICON AREA
+================================ */
+.icon-upload-box {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.icon-preview {
+  max-width: 180px;
+  height: auto;
+  margin: 1.5rem auto;
+  display: block;
+  border-radius: 14px;
+  padding: 10px;
+  background: #0a0f1f;
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  box-shadow: 0 0 15px rgba(0,0,0,0.35);
+  object-fit: contain;
+}
+
+.no-icon {
+  color: #ccc;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+/* FORCE FIX – prevent oversized favicon */
+.admin-box img {
+  max-width: 160px !important;
+  max-height: 160px !important;
+  width: auto !important;
+  height: auto !important;
+  object-fit: contain !important;
+  display: block;
+  margin: 1.5rem auto;
+}
+/* תצוגת אייקון מסודרת */
+.icon-upload-box {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.icon-preview {
+  max-width: 150px;
+  height: auto;
+  margin: 1.5rem auto;
+  display: block;
+  border-radius: 14px;
+  padding: 10px;
+  background: #0a0f1f;
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  box-shadow: 0 0 15px rgba(0,0,0,0.35);
+  object-fit: contain;
+}
+
+.no-icon {
+  color: #ccc;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+/* ==== Drag & Drop – Desktop + Mobile ==== */
+
+.draggable-item {
+  cursor: grab;
+}
+
+.draggable-item:active {
+  cursor: grabbing;
+  opacity: 0.75;
+  transform: scale(0.97);
+  transition: 0.15s;
+}
+
+/* בחירה בתנועה בסלולרי */
+.draggable-item:active img {
+  opacity: 0.9;
+}
+.draggable-item {
+  cursor: grab;
+}
+
+.draggable-item:active {
+  cursor: grabbing;
+  opacity: 0.75;
+  transform: scale(0.97);
+  transition: 0.15s;
+}
+.messages-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.message-card {
+  background: #0b0f16;
+  border: 1px solid rgba(212,175,55,0.3);
+  border-radius: 14px;
+  padding: 1.2rem;
+  box-shadow: 0 0 12px rgba(0,0,0,0.35);
+}
+
+.message-card p {
+  margin: 0.2rem 0;
+}
+
+.message-card .date {
+  color: #aaa;
+  font-size: 0.8rem;
+}
+
+.message-card .delete-btn {
+  margin-top: 0.8rem;
+  width: 100%;
+}
+.messages-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.message-card {
+  background: #0b0f16;
+  padding: 1.2rem 1.4rem;
+  border-radius: 12px;
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.35);
+  color: #fff;
+}
+
+.message-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.6rem;
+}
+
+.message-text {
+  margin: 0.7rem 0;
+  white-space: pre-wrap;
+}
+
+.message-date {
+  margin-top: 0.6rem;
+  font-size: 0.85rem;
+  color: #aaa;
+}
+/* כפתור מחיקת הודעה */
+.msg-delete-btn {
+  background: #d9534f;
+  border: none;
+  color: white;
+  font-size: 0.85rem;
+  padding: 0.4rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.msg-delete-btn:hover {
+  background: #c9302c;
+}
